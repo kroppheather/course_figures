@@ -103,3 +103,37 @@ axis(1, seq(0,40,by=5),seq(0,40,by=5),cex=1.5)
 axis(2, seq(0,35,by=5),seq(0,35,by=5),cex=1.5,las=2)
 mtext("Tree height (m)", side=1, line=2.5, cex=1.5)
 mtext("Number of observations",side=2,line=2,cex=1.5)
+
+#comparison between species
+mapleH <- rnorm(300,30,4)
+mapleM <- mean(mapleH)
+mapleSD <- sd(mapleH)
+
+histM <- hist(mapleH, breaks=seq(0,45))
+
+plot(c(0,1),c(0,1), type="n", xlim=c(0,45), ylim=c(0,35), xaxs="i", yaxs="i",axes=FALSE,xlab=" ", ylab=" ")
+for(i in 1:length(histL$breaks)){
+	polygon(c(histL$breaks[i]-.25,histL$breaks[i]-.25,histL$breaks[i]+.25,histL$breaks[i]+.25),
+			c(0,histL$counts[i],histL$counts[i],0),col=rgb(108,166,205,155,maxColorValue=255),border=NA)
+}
+
+for(i in 1:length(histL$breaks)){
+	polygon(c(histM$breaks[i]-.25,histM$breaks[i]-.25,histM$breaks[i]+.25,histM$breaks[i]+.25),
+			c(0,histM$counts[i],histM$counts[i],0),col=rgb(205,79,57,155,maxColorValue=255),border=NA)
+}
+
+points(seq(0,45,length.out=200),dnorm(seq(0,45,length.out=200),larchM,larchSD)*400,type="l",
+		lwd=5, col=	rgb(108,166,205,maxColorValue=255))
+		
+points(seq(0,45,length.out=200),dnorm(seq(0,45,length.out=200),mapleM,mapleSD)*300,type="l",
+		lwd=5,	col=rgb(205,79,57,maxColorValue=255))	
+		
+
+
+axis(1, seq(0,45,by=5),seq(0,45,by=5),cex=1.5)
+axis(2, seq(0,35,by=5),seq(0,35,by=5),cex=1.5,las=2)
+mtext("Tree height (m)", side=1, line=2.5, cex=1.5)
+mtext("Number of observations",side=2,line=2,cex=1.5)
+
+points(rep(larchM, 20), seq(30.5,35,length.out=20),type="l",lwd=5, col=	rgb(108,166,205,maxColorValue=255))
+points(rep(mapleM, 20), seq(30.5,35,length.out=20),type="l",lwd=5,	col=rgb(205,79,57,maxColorValue=255))
