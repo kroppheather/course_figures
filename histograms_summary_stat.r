@@ -1,4 +1,4 @@
-setwd("c:\\Users\\hkropp\\Google Drive\\courses\\Fall2019\\remote_sensing\\figures")
+setwd("c:\\Users\\hkropp\\Google Drive\\courses\\Spring2020\\Environmental Data Science\\figures")
 
 #start with sampling example and demonstrate a histogram for a few samples
 heights <- c(20,21,15,17,20)
@@ -137,3 +137,17 @@ mtext("Number of observations",side=2,line=2,cex=1.5)
 
 points(rep(larchM, 20), seq(30.5,35,length.out=20),type="l",lwd=5, col=	rgb(108,166,205,maxColorValue=255))
 points(rep(mapleM, 20), seq(30.5,35,length.out=20),type="l",lwd=5,	col=rgb(205,79,57,maxColorValue=255))
+
+
+ext <- t.test(larchH, mapleH)
+
+x.t <- seq(-25,25, by=.01)
+plot(x.t, dt(x.t,ext$parameter), type="l", xlab="t statistic for difference between means", ylab="Relative density", lwd=2, col="royalblue3")
+abline(v=ext$statistic,lwd=2, lty=2, col="tomato3")
+
+
+
+#effect size
+mapleH <- rnorm(10000000,27.25,2)
+larchH <- rnorm(10000000,27.15,2)
+t.test(larchH,mapleH)
