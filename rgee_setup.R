@@ -11,3 +11,4 @@ ee_install()
 
 # Initialize Earth Engine!
 ee_Initialize()
+ee_check()
