@@ -107,3 +107,9 @@ noise@crs
 noiseP <- projectRaster(noise, crs="+init=epsg:4269")
 noiseCrop <- crop(noiseP, race_oneida)
 
+plot(noiseCrop)
+plot(income_oneida$geometry, add=TRUE)
+
+
+writeRaster(noiseCrop,"E:/Google Drive/GIS_teaching/ENVST110_F22/noise_2018.tif",
+            format="GTiff")
