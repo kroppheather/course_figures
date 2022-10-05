@@ -1,0 +1,44 @@
+---
+title: "Mapping EJ in Utica"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(mapview)
+library(raster)
+library(sf)
+library(dplyr)
+library(htmltools)
+
+```
+
+
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+noiseCrop <- raster("E:/Google Drive/GIS_teaching/ENVST110_F22/noise_2018.tif")
+redline <- st_read("E:/Google Drive/GIS_teaching/ENVST110_F22/NYUtica1936/cartodb-query.shp")
+map50 <- raster("E:/Google Drive/GIS_teaching/ENVST110_F22/A550500171317_ref.tif")
+tempAnom <- raster("E:/Google Drive/GIS_teaching/ENVST110_F22/temp_anom_c.tif")
+
+Ucenter2 <- extent(-8382000,-8373500,
+                   5324000,5329000)
+map50c <- crop(map50, Ucenter2)
+plot(map50c, col=gray(1:100/100))
+
+mapview(noiseCrop, layer.name = "noise (dB)")+
+  mapview(tempAnom, col=hcl.colors(12,"Zissou1") )+
+  mapview(map50c, col=grey(1:100/100), maxpixels=5000000, alpha=1)+
+  mapview(redline["holc_grade"], col.regions=c("palegreen4",
+                                               "royalblue3",
+                                               "darkgoldenrod2",
+                                               "tomato3"), layer.name="redlining grade")
+  
+
+
+```
