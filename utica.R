@@ -17,7 +17,7 @@ mapview(map50, col=grey(1:100/100))+
 
 mapview(noiseCrop, layer.name = "noise (dB)")+
   mapview(tempAnom, col=hcl.colors(12,"Zissou1"),
-          layer.name-"tempAnom (C)")+
+          layer.name="Temp Anomaly (C)")+
   mapview(map50, col=grey(1:100/100), 
           maxpixels=5000000, alpha=1, legend=FALSE)+
   mapview(redline, zcol="holc_grade",
