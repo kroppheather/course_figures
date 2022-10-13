@@ -130,9 +130,22 @@ plot(map50c, col=gray(1:100/100))
 mapview(noiseCrop, layer.name = "noise (dB)")+
   mapview(tempAnom, col=hcl.colors(12,"Zissou1") )+
   mapview(map50c, col=grey(1:100/100), maxpixels=5000000, alpha=1)+
-  mapview(redline["holc_grade"], col.regions=c("palegreen4",
-                                               "royalblue3",
-                                               "darkgoldenrod2",
-                                               "tomato3"), layer.name="redlining grade")
-  
+  mapview(redline, zcol="holc_grade")#, col.regions=c("palegreen4",
+                                              # "royalblue3",
+                                             #  "darkgoldenrod2",
+                                              # "tomato3"))
 
+A_grade <- redline[redline$holc_grade == "A",]
+B_grade <- redline[redline$holc_grade == "B",]
+C_grade <- redline[redline$holc_grade == "C",]
+D_grade <- redline[redline$holc_grade == "D",]
+
+mapview(noiseCrop, layer.name = "noise (dB)")+
+  mapview(tempAnom, col=hcl.colors(12,"Zissou1") )+
+  mapview(map50c, col=grey(1:100/100), maxpixels=5000000, alpha=1)+
+  mapview(redline)
+  
+mapview(noiseCrop, layer.name = "noise (dB)")+
+  mapview(redline)
+noiseCrop@crs
+tempAnom@crs
