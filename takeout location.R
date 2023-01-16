@@ -1,6 +1,6 @@
 install.packages("rjson")
 library(rjson)
-
+library(mapview)
 library(sf)
 myData <- fromJSON(file="/Users/hkropp/Downloads/Takeout/Location History/Semantic Location History/2022/2022_SEPTEMBER.json")
 
