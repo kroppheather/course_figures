@@ -78,8 +78,10 @@ park_data3 <- getReadings(
   device_sn = "z6-18662",
   token = k_token,
   start_time = "2022-08-01 00:00:00",
-  end_time = "2022-08-7 23:00:00",
+  end_time = "2022-08-05 23:00:00",
   cache = "default",
   domain = "default",
   force = FALSE
 )
+
+vignette("zentracloud")
