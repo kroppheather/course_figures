@@ -27,11 +27,13 @@ sensorDF <- zentra_data[[2]]
 
 # questions:
 # what is timestamp utc? Is it in postix?
-# is datetime in utc?
-# timezone offset in seconds. Time zone offeset makes no sense for local time
-# with daylight savings
-# regardless of the timestamp being stored in local time or UTC
-# PLEASE remove spaces in column names!!!!!! 
+# better documentation for  datetime? 
+# running the first UTC time column in an epoch time converter
+# yields local time in the timezone and dst conversion is in there
+# timezone offset in seconds. Time zone offset makes no sense for local time
+# with daylight savings with a hop in the timezone at 4 am
+# but the actual daylight savings shift is correct in local time
+
 library(ggplot2)
 library(lubridate)
 sensorDF$timeF <- ymd_hms(sensorDF$datetime)
