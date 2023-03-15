@@ -85,3 +85,12 @@ park_data3 <- getReadings(
 )
 
 vignette("zentracloud")
+
+attributes(zentra_data[[1]][,3])
+
+attributes(zentra_data[[2]][,4])
+
+
+
+attributes(zentra_data[[2]][,5])
+
